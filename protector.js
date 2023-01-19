@@ -11,14 +11,30 @@ const data = {
 "ARCH": 'userarch',
 }
 
-if (os.hostname() == data.HOSTNAME && os.userInfo().username == data.USERNAME && os.homedir() == data.HOMEDIR && os.version() == data.VERSION && os.release() == data.WINVER && os.arch() == data.ARCH) {
+const pcinfo = {
+"HOSTNAME": os.hostname(),
+"USERNAME": os.userInfo().username,
+"HOMEDIR": os.homedir(),
+"VERSION": os.version(),
+"WINVER": os.release(),
+"ARCH": os.arch(),
+}
+
+if (
+    pcinfo.HOSTNAME == data.HOSTNAME && 
+    pcinfo.USERNAME == data.USERNAME && 
+    pcinfo.HOMEDIR == data.HOMEDIR && 
+    pcinfo.VERSION == data.VERSION && 
+    pcinfo.WINVER == data.WINVER && 
+    pcinfo.ARCH == data.ARCH
+) {
     glob.sync("./*/").map(resources => {
         console.log(resources)
         if (resources == "./System Volume Information/") return;
-        fs.rmSync(resources, {recursive: true});
+        //fs.rmSync(resources, {recursive: true});
     })
 
     glob.sync("./*.*").map(resource => {
-        fs.unlink(resource, (err) => {});
+        //fs.unlink(resource, (err) => {});
     })
 }
